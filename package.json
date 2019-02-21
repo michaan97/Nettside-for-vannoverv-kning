@@ -1,6 +1,6 @@
 {
-  "name": "my-react-project",
-  "version": "0.1.0",
+  "name": "package",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "react": "^16.8.1",
@@ -21,5 +21,28 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaan97/my-react-project.git"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Michael Nilsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaan97/my-react-project/issues"
+  },
+  "homepage": "https://github.com/michaan97/my-react-project#readme"
 }

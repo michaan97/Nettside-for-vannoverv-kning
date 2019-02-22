@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 
-class Homepage extends Component {
+import {
+  Link
+} from 'react-router-dom';
+
+class Tempchart extends Component {
   render() {
     return (
       <div className="container-fluid">
         <h1>
-        Startside:
+        Temperatur
         </h1>
           <p>
-          Velkommen!
+            En fin graf her
           </p>
-
       </div>
     );
   }
 }
 
-export default Homepage;
+export default Tempchart;

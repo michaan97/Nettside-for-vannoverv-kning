@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import {
+  Link
+} from 'react-router-dom';
+
 class Temperature extends Component {
   render() {
     return (
@@ -7,14 +11,20 @@ class Temperature extends Component {
         <h1>
         Temperatur
         </h1>
-          <p>
-      Målinger her ... 44
-      4
-      44
-      4
-      4
-      4
-      </p>
+
+        <nav>
+          <ul>
+            <li className="first">
+              <Link to="/Temperature/Chart">Grafmålinger</Link>
+            </li>
+            <li>
+              <Link to="/Temperature/Latest">Siste målinger</Link>
+            </li>
+            <li className="last">
+              <Link to="/Temperature/History">Historikk</Link>
+            </li>
+          </ul>
+        </nav>
 
       </div>
     );

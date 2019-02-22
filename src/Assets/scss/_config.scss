@@ -6,6 +6,24 @@ $white: #ffffff;
 $lightgrey: #e6e6e6;
 $darkgrey: #333;
 $red: #ff1755;
+$blue: #0000ff;
+
+/*
+Mixins
+*/
+
+@mixin translateY($e) {
+  -webkit-transform: translateY($e);
+    -moz-transform: translateY($e);
+          transform: translateY($e);
+}
+
+@mixin transition($e) {
+  -webkit-transition:$e;
+    -moz-transition:$e;
+          transition:$e;
+}
+
 
 /* Fonts -
 
@@ -26,21 +44,15 @@ body {
 
 a {
   text-decoration: none;
-  @mixin transition(.4s ease-in-out);
+  @include transition(.4s ease-in-out);
   cursor: pointer;
-}
-/*
-Mixins
-*/
 
-@mixin translateY($e) {
-  -webkit-transform: translateY($e);
-    -moz-transform: translateY($e);
-          transform: translateY($e);
+  &:hover {
+    color: $lightgrey;
+    @include transition(.4s ease-in-out);
+  }
 }
+.container-fluid {
+  line-height: 24px;
 
-@mixin transition($e) {
-  -webkit-transition:$e;
-    -moz-transition:$e;
-          transition:$e;
 }

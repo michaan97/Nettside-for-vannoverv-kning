@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 
-class Homepage extends Component {
+class Turbidity extends Component {
   render() {
     return (
       <div className="container-fluid">
         <h1>
-        Hjemmeside:
+        Turbiditet
         </h1>
           <p>
-          Velkommen!
-          </p>
+      Målinger her ... 44
+      4
+      44
+      4
+      4
+      4
+      </p>
 
       </div>
     );
   }
 }
 
-export default Homepage;
+export default Turbidity;

@@ -20,6 +20,9 @@ class Temperature extends Component {
             <li>
               <Link to="/Temperature/Latest">Siste målinger</Link>
             </li>
+            <li>
+              <Link to="/Temperature/Aggregate">Høyeste, laveste og gjennomsnitt</Link>
+            </li>
             <li className="last">
               <Link to="/Temperature/History">Historikk</Link>
             </li>

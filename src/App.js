@@ -14,6 +14,7 @@ import PH from './components/pages/ph';
 import Conductivity from './components/pages/conductivity';
 import Turbidity from './components/pages/turbidity';
 
+import Tempagg from './components/subpages/temperature/tempagg';
 import Tempchart from './components/subpages/temperature/tempchart';
 import Temphistory from './components/subpages/temperature/temphistory';
 import Templatest from './components/subpages/temperature/templatest';
@@ -35,7 +36,7 @@ class App extends Component {
           <Route exact path='/Conductivity' component={Conductivity} />
           <Route exact path='/Turbidity' component={Turbidity} />
 
-
+          <Route exact path='/Temperature/Aggregate' component={Tempchart} />
           <Route exact path='/Temperature/Chart' component={Tempchart} />
           <Route exact path='/Temperature/Latest' component={Templatest} />
           <Route exact path='/Temperature/History' component={Temphistory} />

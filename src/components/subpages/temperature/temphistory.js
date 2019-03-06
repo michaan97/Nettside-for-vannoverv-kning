@@ -4,21 +4,74 @@ import {
   Link
 } from 'react-router-dom';
 
-class Temphistory extends Component {
-  render() {
-    return (
-      <div className="container-fluid">
-        <h1>
-        Temperatur
-        </h1>
+import axios from 'axios';
 
-        <p>
-          Historikk over målinger her...
-        </p>
-        
-      </div>
+class Temphistory extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoaded: false,
+      getData: []
+    }
+    this.getData = this.getData.bind(this);
+  }
+  getData() {
+    axios.get('https://vannovervakning.com/api/v1/measurements/1/?types=TEMPERATURE')
+    .then( (res) => {
+      this.setState({
+        isLoaded: true,
+        getData: res.data,
+      });
+      console.log("getData", this.state.getData);
+    })
+    .catch( (error) => {
+      console.log(error);
+    });
+  }
+
+
+  componentDidMount() {
+    this.getData();
+  }
+
+
+  render() {
+
+  var { isLoaded, items, getData } = this.state;
+
+  if (!isLoaded) {
+    return <div> Loading... </div>;
+  }
+  else {
+    console.log("getData", getData);
+
+    const rows = getData.data.TEMPERATURE.map((item) => (
+      <tr key={item.id}>
+        <th>{item.number}</th>
+        <td>{item.value}</td>
+        <td>{item.position}</td>
+        <td>{item.timeCreated}</td>
+      </tr>
+      )
     );
+
+    return (
+      <table className="table table-hover">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Value</th>
+            <th>Position</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    );
+  };
   }
 }
-
 export default Temphistory;

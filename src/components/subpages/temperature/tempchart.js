@@ -1,64 +1,63 @@
 import React, { Component } from 'react';
 
-import {
-  Link
-} from 'react-router-dom';
 
 import axios from 'axios';
+import {Bar, Line, Pie} from 'react-chartjs-2';
+import Chart from '../../charts/Chart.js'
 
+class Tempchart extends Component{
+	constructor(){
+    super();
+    this.state = {
+      chartData:{}
+    }
+  }
 
-import CanvasJSReact from './../../../canvasjs.react';
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+  componentWillMount(){
+    this.getChartData();
+  }
 
-var dataPoints =[];
-class Tempchart extends Component {
+  getChartData(){
+    // Ajax calls here
+    this.setState({
+      chartData:{
+        labels: ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'],
+        datasets:[
+          {
+            label:'Temperatur',
+            data:[
+              17,
+              21,
+              17,
+              19,
+              18.5,
+              16,
+							19
+            ],
+            backgroundColor:[
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
+              'rgba(75, 192, 192, 0.6)',
+              'rgba(153, 102, 255, 0.6)',
+              'rgba(255, 159, 64, 0.6)',
+              'rgba(255, 99, 132, 0.6)',
+							'rgba(255, 255, 255, 0.6)'
+            ]
+          }
+        ]
+      }
+    });
+  }
 
-	render() {
-		const options = {
-			theme: "light2",
-			title: {
-				text: "Temperaturmålinger"
-			},
-			axisY: {
-				title: "Temp i °C",
-				prefix: "°C",
-				includeZero: false
-			},
-			data: [{
-				type: "line",
-				xValueFormatString: "MMM YYYY",
-				yValueFormatString: "$#,##0.00",
-				dataPoints: dataPoints
-			}]
-		}
-		return (
-		<div>
-			<CanvasJSChart options = {options}
-				 onRef={ref => this.chart = ref}
-			/>
-			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-		</div>
-		);
-	}
-
-	componentDidMount(){
-		var chart = this.chart;
-		fetch('https://vannovervakning.com/api/v1/measurements/1/1551442300000/?types=TEMPERATURE')
-		.then(function(response) {
-			return response.json();
-		})
-		.then(function(data) {
-			for (var i = 0; i < data.length; i++) {
-				dataPoints.push({
-					x: new Date(data[i].timeCreated),
-					y: data[i].value
-				});
-			}
-      console.log(5);
-      console.log(data);
-			chart.render();
-		});
-	}
+  render() {
+    return (
+      <div className="chart">
+        <Chart chartData={this.state.chartData} location="Koopen" legendPosition="bottom"/>
+      </div>
+    );
+  }
 }
+
+
 export default Tempchart;

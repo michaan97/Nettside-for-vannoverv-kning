@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-import {
-  Link
-} from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -38,7 +35,7 @@ class Temphistory extends Component {
 
   render() {
 
-  var { isLoaded, items, getData } = this.state;
+  var { isLoaded, getData } = this.state;
 
   if (!isLoaded) {
     return <div> Loading... </div>;

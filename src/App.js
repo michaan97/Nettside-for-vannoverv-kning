@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link
 } from 'react-router-dom';
 
 // components
@@ -36,7 +35,7 @@ class App extends Component {
           <Route exact path='/Conductivity' component={Conductivity} />
           <Route exact path='/Turbidity' component={Turbidity} />
 
-          <Route exact path='/Temperature/Aggregate' component={Tempchart} />
+          <Route exact path='/Temperature/Aggregate' component={Tempagg} />
           <Route exact path='/Temperature/Chart' component={Tempchart} />
           <Route exact path='/Temperature/Latest' component={Templatest} />
           <Route exact path='/Temperature/History' component={Temphistory} />

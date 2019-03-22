@@ -13,10 +13,10 @@ class Footer extends Component {
       <nav>
         <ul>
           <li className="first">
-            <a href="#">Navn</a>
+            <a href="Navn">Navn</a>
           </li>
           <li className="last">
-            <a href="#">E-post</a>
+            <a href="E-post">E-post</a>
           </li>
         </ul>
       </nav>

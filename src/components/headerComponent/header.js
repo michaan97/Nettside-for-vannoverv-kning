@@ -25,10 +25,10 @@ class Header extends Component {
             <Link to="/PH">PH</Link>
           </li>
           <li>
-            <Link to="/Conductivity">Conductivity</Link>
+            <Link to="/Conductivity">Konduktivitet</Link>
           </li>
           <li className="last">
-            <Link to="/Turbidity">Turbidity</Link>
+            <Link to="/Turbidity">Turbiditet</Link>
           </li>
         </ul>
       </nav>

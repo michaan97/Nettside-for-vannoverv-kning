@@ -3,19 +3,24 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import {Bar, Line, Pie} from 'react-chartjs-2';
-import Chart from '../../charts/Chart2.js'
+import Chart2 from '../../charts/Chart2.js'
 
-class Tempagg extends Component {
-  constructor(props) {
-    super(props);
+class Tempagg extends Component{
+	constructor(){
+    super();
     this.state = {
+      chartData:{},
       isLoaded: false,
       getData: []
     }
-    this.getData = this.getData.bind(this);
+
+    }
+
+  componentWillMount(){
+    this.getChartData();
   }
 
-  getData() {
+  getChartData(){
     axios.get('https://vannovervakning.com/api/v1/measurements/1/?types=TEMPERATURE')
     .then( (res) => {
       this.setState({
@@ -26,9 +31,7 @@ class Tempagg extends Component {
           datasets:[
             {
               label:'Temperatur',
-              data:[
-                this.state.getData.data.TEMPERATURE.value
-              ],
+              data:[this.state.getData.data.TEMPERATURE.value],
               backgroundColor:[
                 'rgba(255, 99, 132, 0.6)',
                 'rgba(54, 162, 235, 0.6)',
@@ -43,31 +46,28 @@ class Tempagg extends Component {
           ]
         }
       });
-      console.log("getData", this.state.getData);
+      console.log("getData", this.state.getChartData);
     })
     .catch( (error) => {
       console.log(error);
     });
-
-  }
-
-  componentDidMount() {
-    this.getData();
   }
 
   render() {
-    var { isLoaded, getData } = this.state;
+    var { isLoaded, getChartData } = this.state;
 
     if (!isLoaded) {
       return <div> Loading... </div>;
     }
-      else {
-      return (
-        <div className="chart">
-          <Chart chartData={this.state.chartData} location="Koopen" legendPosition="bottom"/>
-        </div>
-      );
+    else {
+    return (
+      <div className="chart">
+        <Chart2 chartData={this.state.chartData} location="Koopen" legendPosition="bottom"/>
+      </div>
+    );
     }
   }
 }
+
+
 export default Tempagg;

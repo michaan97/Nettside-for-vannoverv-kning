@@ -26,7 +26,7 @@ class Chart2 extends Component
            options={{
              title:{
                display:this.props.displayTitle,
-               text:'Hvor kaldt er det i '+this.props.location,
+               text:'Temperaturen i '+this.props.location,
                fontSize:25
              },
              legend:{
@@ -41,7 +41,7 @@ class Chart2 extends Component
            options={{
              title:{
                display:this.props.displayTitle,
-               text:'Hvor kaldt er det i '+this.props.location,
+               text:'Temperaturen i '+this.props.location,
                fontSize:25
              },
              legend:{
@@ -56,7 +56,7 @@ class Chart2 extends Component
            options={{
              title:{
                display:this.props.displayTitle,
-               text:'Hvor kaldt er det i '+this.props.location,
+               text:'Temperaturen i '+this.props.location,
                fontSize:25
              },
              legend:{

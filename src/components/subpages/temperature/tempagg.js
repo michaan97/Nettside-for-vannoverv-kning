@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 import axios from 'axios';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+//import {Bar, Line, Pie} from 'react-chartjs-2';
 import Chart2 from '../../charts/Chart2.js'
 
 class Tempagg extends Component{
@@ -10,51 +10,52 @@ class Tempagg extends Component{
     super();
     this.state = {
       chartData:{},
-      isLoaded: false,
-      getData: []
+      isLoaded: false
     }
 
     }
 
-  componentWillMount(){
+  componentDidMount(){
     this.getChartData();
   }
 
   getChartData(){
     axios.get('https://vannovervakning.com/api/v1/measurements/1/?types=TEMPERATURE')
     .then( (res) => {
-      this.setState({
-        isLoaded: true,
-        getData: res.data,
-        chartData:{
-          labels: [this.state.getData.data.TEMPERATURE.timeCreated],
-          datasets:[
-            {
-              label:'Temperatur',
-              data:[this.state.getData.data.TEMPERATURE.value],
-              backgroundColor:[
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)',
-                'rgba(153, 102, 255, 0.6)',
-                'rgba(255, 159, 64, 0.6)',
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(255, 255, 255, 0.6)'
-              ]
-            }
-          ]
-        }
-      });
-      console.log("getData", this.state.getChartData);
-    })
+        const temp = res.data;
+				let labels = temp.chartData.labels;
+				let data = temp.chartData.datasets.data;
+				console.log(res.data);
+				/*Array.prototype.forEach.call(temp, element => {
+					labels.push(element.labels);
+					data.push(element.data);
+				});*/
+      console.log(temp);
+				this.setState({
+					isLoaded: true,
+					chartData: {
+						labels:labels,
+						datasets: [
+							{
+								label: "Temperatur",
+								data: data,
+								backgroundColor: [
+									"rgba(255, 99, 132, 0.6)",
+                  "rgba(54, 162, 235, 0.6)",
+                  "rgba(255, 99, 132, 0.6)"
+								],
+							}
+						]
+					}
+				});
+    	})
     .catch( (error) => {
       console.log(error);
     });
   }
 
   render() {
-    var { isLoaded, getChartData } = this.state;
+    var { isLoaded, ChartData } = this.state;
 
     if (!isLoaded) {
       return <div> Loading... </div>;
@@ -62,7 +63,9 @@ class Tempagg extends Component{
     else {
     return (
       <div className="chart">
-        <Chart2 chartData={this.state.chartData} location="Koopen" legendPosition="bottom"/>
+			{Object.keys(this.state.chartData).length &&
+        <Chart2 chartData={this.state.chartData} location="Vikelva" legendPosition="bottom"/>
+				}
       </div>
     );
     }

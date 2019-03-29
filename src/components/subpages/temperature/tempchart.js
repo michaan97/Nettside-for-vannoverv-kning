@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 import axios from 'axios';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+//import {Bar, Line, Pie} from 'react-chartjs-2';
 import Chart from '../../charts/Chart.js'
 
 class Tempchart extends Component{

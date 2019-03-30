@@ -1,17 +1,25 @@
 @import "_config.scss";
-
 header {
   position: relative;
   display: block;
   width: 100%;
-  background: $black;
+  background: $darkgrey;
   color: $white;
   height: 90px;
 
   .logo {
+
+
+
     position: absolute;
-    top: 50%; left: 15px;
+    top: 50%; left: 20px;
     @include translateY(-50%);
+    img {
+      width:10%;
+      height:width;
+    position: relative;
+    left:-10px;
+    }
   }
 
   nav,
@@ -38,22 +46,35 @@ header {
       a {
         font-size: 19px;
         line-height: normal;
-        color: $white;
+        color: $lightgrey;
       }
     }
   }
 }
 footer {
-  position: relative;
-  display: block;
+  position: absolute;
+  bottom:0;
   width: 100%;
-  background: $black;
+
+  background: $darkgrey;
   color: $white;
-  height: 90px;
+  height: 60px;
+
+  .home{
+    a{
+      color:$lightgrey;
+      display: inline-block;
+      font-size: 24px;
+      line-height: normal;
+    }
+    position: absolute;
+    top: 50%; left: 15px;
+    @include translateY(-50%);
+  }
 
   .contactInfo {
     position: absolute;
-    top: 50%; left: 15px;
+    top: 50%; right: 400px;
     @include translateY(-50%);
   }
 
@@ -67,7 +88,7 @@ footer {
 
   nav {
     position: absolute;
-    top: 50%; right: 15px;
+    top: 50%; right: 200px;
     @include translateY(-50%);
 
     ul li {
@@ -81,7 +102,7 @@ footer {
       a {
         font-size: 19px;
         line-height: normal;
-        color: $white;
+        color: $grey;
       }
     }
   }

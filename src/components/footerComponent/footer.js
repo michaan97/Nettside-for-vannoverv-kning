@@ -5,21 +5,26 @@ class Footer extends Component {
     return (
       <footer>
 
-      <div className="contactInfo">
-      Kontaktinformasjon
 
-      </div>
+        <div className="home">
+          <a href="">Vannovervåkning</a>
+        </div>
 
-      <nav>
-        <ul>
-          <li className="first">
-            <a href="Navn">Navn</a>
-          </li>
-          <li className="last">
-            <a href="E-post">E-post</a>
-          </li>
-        </ul>
-      </nav>
+        <div className="contactInfo">
+        Kontaktinformasjon:
+
+        </div>
+
+        <nav>
+          <ul>
+            <li className="first">
+              <a href="Navn">Navn</a>
+            </li>
+            <li className="last">
+              <a href="E-post">E-post</a>
+            </li>
+          </ul>
+        </nav>
 
       </footer>
 

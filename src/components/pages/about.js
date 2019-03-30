@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class Homepage extends Component {
+class About extends Component {
   render() {
     return (
       <div className="container-fluid">
         <h1>
-        Startside
+        Om oss
         </h1>
           <p>
-          Velkommen!
+          Vi er gruppe 1!
           </p>
 
       </div>
@@ -16,4 +16,4 @@ class Homepage extends Component {
   }
 }
 
-export default Homepage;
+export default About;

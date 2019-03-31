@@ -77,9 +77,10 @@ class Temphistory extends Component {
   render() {
 
   var { isLoaded, getData } = this.state;
+  let table =<div> Loading... </div>;
 
   if (!isLoaded) {
-    return <div> Loading... </div>;
+    table = <div> Loading... </div>;
   }
   else {
     console.log("getData", getData);
@@ -95,36 +96,7 @@ class Temphistory extends Component {
       )
     );
 
-    return (
-      <div className="history">
-      <div className="header" style={headerStyle}>
-
-      <div className="date" style={dateStyle}>
-      Fra:&emsp;
-      <DatePicker
-        selected={this.state.startDate}
-        selectsStart
-        startDate={this.state.startDate}
-        endDate={this.state.endDate}
-        onChange={this.handleStartChange}
-      />
-      &emsp;&emsp;
-      Til:&emsp;
-      <DatePicker
-        selected={this.state.endDate}
-        selectsEnd
-
-        startDate={this.state.startDate}
-        endDate={this.state.endDate}
-        onChange={this.handleEndChange}
-        todayButton={"I dag"}
-      />
-      </div>
-      </div>
-
-
-
-      <table className="table table-hover">
+    table =   (<table className="table table-hover">
         <thead>
           <tr>
             <th>Id</th>
@@ -135,11 +107,41 @@ class Temphistory extends Component {
         <tbody>
           {rows}
         </tbody>
-      </table>
+      </table>);
+  }
+    return (
+      <div className="history">
+
+      <div className="header" style={headerStyle}>
+
+          <div className="date" style={dateStyle}>
+          Fra:&emsp;
+          <DatePicker
+            selected={this.state.startDate}
+            selectsStart
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+            onChange={this.handleStartChange}
+          />
+          &emsp;&emsp;
+          Til:&emsp;
+          <DatePicker
+            selected={this.state.endDate}
+            selectsEnd
+
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+            onChange={this.handleEndChange}
+            todayButton={"I dag"}
+          />
+          </div>
+        </div>
+        {table}
       </div>
 
     );
-  };
+
+
   }
 }
 export default Temphistory;

@@ -29,7 +29,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "This project was developed by Michael Nilsen.",
   "main": "index.js",
   "devDependencies": {
     "gulp": "^3.9.0",

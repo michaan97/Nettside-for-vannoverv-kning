@@ -23,13 +23,13 @@ class Tempagg extends Component{
     axios.get('https://vannovervakning.com/api/v1/measurements/1/?types=TEMPERATURE')
     .then( (res) => {
         const temp = res.data;
-				let labels = temp.chartData.labels;
-				let data = temp.chartData.datasets.data;
-				console.log(res.data);
-				/*Array.prototype.forEach.call(temp, element => {
+				let labels = temp.data.TEMPERATURE.timeCreated.chartData.labels;
+				let data = temp.data.TEMPERATURE.value.chartData.datasets.data;
+				console.log("hello", res.data);
+				Array.prototype.forEach.call(temp, element => {
 					labels.push(element.labels);
 					data.push(element.data);
-				});*/
+				});
       console.log(temp);
 				this.setState({
 					isLoaded: true,

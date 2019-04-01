@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
+import GetData from '../../tools/getdata.js';
+import {export_table_to_csv} from '../../tools/misc';
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import axios from 'axios';
+const buttonStyle = {
 
-const headerStyle = {
-  height: '50px',
-
-};
-
-const dateStyle = {
-  top: '10px',
-  left: '50%',
   position: 'relative',
+  left:'75%',
 };
 
 class Temphistory extends Component {
@@ -21,69 +14,34 @@ class Temphistory extends Component {
     super(props);
     this.state = {
       isLoaded: false,
-      getData: [],
-      startDate: new Date(Date.now()-604600000),
-      endDate: new Date(Date.now()),
-    }
-
-    this.getData = this.getData.bind(this);
-    this.handleEndChange = this.handleEndChange.bind(this);
-    this.handleStartChange = this.handleStartChange.bind(this);
-  }
-  getData(start, end) {
-      this.setState({
-        isLoaded: false,
-    });
-    console.log(start.getTime());
-
-    var url = 'https://vannovervakning.com/api/v1/measurements/1/';
-
-    url += start.getTime() + '/';
-    url +=  end.getTime();
-    url += '/?types=TEMPERATURE';
-    console.log(url);
-    axios.get(url)
-    .then( (res) => {
-      this.setState({
-        isLoaded: true,
-        getData: res.data,
-      });
-      console.log("getData", this.state.getData);
-    })
-    .catch( (error) => {
-      console.log(error);
-    });
+      getData:[],
+    };
+    this.onChange = this.onChange.bind(this);
   }
 
-  handleStartChange(date) {
-     this.setState({
-       startDate: date,
-     });
-     this.getData(date, this.state.endDate);
-  }
-  handleEndChange(date) {
-
+  onChange(data){
+    console.log(data);
     this.setState({
-      endDate: date,
+      getData:data,
+      isLoaded:true,
     });
-    this.getData(this.state.startDate,date);
   }
   componentDidMount() {
-    this.getData(this.state.startDate,this.state.endDate);
+    //this.getData(this.state.startDate,this.state.endDate);
   }
 
-
+  handleClick(e, html) {
+      export_table_to_csv(html, "data.csv");
+  }
 
   render() {
-
-  var { isLoaded, getData } = this.state;
+  var { isLoaded, getData } =this.state;
   let table =<div> Loading... </div>;
-
+  let button =null;
   if (!isLoaded) {
     table = <div> Loading... </div>;
   }
   else {
-    console.log("getData", getData);
     if( getData.data === undefined || getData.data.TEMPERATURE === undefined || getData.data.TEMPERATURE.length === 0){
       return <div> No data found. </div>;
     }
@@ -95,8 +53,12 @@ class Temphistory extends Component {
       </tr>
       )
     );
-
-    table =   (<table className="table table-hover">
+    button =
+    <button style={buttonStyle} onClick={this.handleClick}>
+      Last ned data til csv
+    </button>;
+    table = (
+      <table id="table">
         <thead>
           <tr>
             <th>Id</th>
@@ -112,31 +74,11 @@ class Temphistory extends Component {
     return (
       <div className="history">
 
-      <div className="header" style={headerStyle}>
-
-          <div className="date" style={dateStyle}>
-          Fra:&emsp;
-          <DatePicker
-            selected={this.state.startDate}
-            selectsStart
-            startDate={this.state.startDate}
-            endDate={this.state.endDate}
-            onChange={this.handleStartChange}
-          />
-          &emsp;&emsp;
-          Til:&emsp;
-          <DatePicker
-            selected={this.state.endDate}
-            selectsEnd
-
-            startDate={this.state.startDate}
-            endDate={this.state.endDate}
-            onChange={this.handleEndChange}
-            todayButton={"I dag"}
-          />
-          </div>
+      <GetData onChange={this.onChange} type ="TEMPERATURE"/>
+        <div>
+        {button}
+          {table}
         </div>
-        {table}
       </div>
 
     );

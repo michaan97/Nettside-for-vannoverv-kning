@@ -74,7 +74,7 @@ footer {
 
   .contactInfo {
     position: absolute;
-    top: 50%; right: 400px;
+    top: 50%; right: 500px;
     @include translateY(-50%);
   }
 
@@ -88,13 +88,31 @@ footer {
 
   nav {
     position: absolute;
-    top: 50%; right: 200px;
+    top: 50%; right: 300px;
     @include translateY(-50%);
 
     ul li {
       list-style-type: none;
       display: inline-block;
       margin-right: 20px;
+
+      &.last {
+        margin-left: 0;
+      }
+      a {
+        font-size: 19px;
+        line-height: normal;
+        color: $grey;
+      }
+    }
+  }
+  .statistics{
+    position: absolute;
+    top: 50%; right: 50px;
+    @include translateY(-50%);
+    ul li {
+      list-style-type: none;
+      display: inline-block;
 
       &.last {
         margin-left: 0;

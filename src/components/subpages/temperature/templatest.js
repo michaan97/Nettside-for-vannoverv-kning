@@ -47,7 +47,6 @@ class TempLatest extends Component {
       <tr key={item.id}>
         <th>{1}</th>
         <td>{item.value + " °C"}</td>
-        <td>{item.position}</td>
         <td>{item.timeCreated}</td>
       </tr>
       )

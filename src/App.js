@@ -3,6 +3,9 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
+import { registerLocale, setDefaultLocale } from "react-datepicker";
+import nb from 'date-fns/locale/nb';
+
 
 // components
 import Header from './components/headerComponent/header';
@@ -12,6 +15,7 @@ import Temperature from './components/pages/temperature';
 import PH from './components/pages/ph';
 import Conductivity from './components/pages/conductivity';
 import Turbidity from './components/pages/turbidity';
+import About from './components/pages/about'
 
 import Tempagg from './components/subpages/temperature/tempagg';
 import Tempchart from './components/subpages/temperature/tempchart';
@@ -20,6 +24,8 @@ import Templatest from './components/subpages/temperature/templatest';
 // includes
 import './Assets/css/default.min.css';
 
+registerLocale('nb', nb);
+setDefaultLocale('nb');
 class App extends Component {
   render() {
     return (
@@ -28,12 +34,12 @@ class App extends Component {
 
         <Header />
 
-
           <Route exact path='/' component={Homepage} />
           <Route exact path='/Temperature' component={Temperature} />
           <Route exact path='/PH' component={PH} />
           <Route exact path='/Conductivity' component={Conductivity} />
           <Route exact path='/Turbidity' component={Turbidity} />
+          <Route exact path='/About' component={About} />
 
           <Route exact path='/Temperature/Aggregate' component={Tempagg} />
           <Route exact path='/Temperature/Chart' component={Tempchart} />

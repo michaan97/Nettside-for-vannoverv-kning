@@ -3,12 +3,16 @@ import {
   Link
 } from 'react-router-dom';
 
+import logo from './elsys.png';
+
 class Header extends Component {
   render() {
     return (
       <header>
 
       <div className="logo">
+
+      <img src={logo} alt=""/>
       Vannovervåkning
 
       </div>
@@ -27,8 +31,11 @@ class Header extends Component {
           <li>
             <Link to="/Conductivity">Konduktivitet</Link>
           </li>
-          <li className="last">
+          <li>
             <Link to="/Turbidity">Turbiditet</Link>
+          </li>
+          <li className="last">
+            <Link to="/About">Om oss</Link>
           </li>
         </ul>
       </nav>

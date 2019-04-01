@@ -6,13 +6,14 @@
     "axios": "^0.18.0",
     "canvasjs": "^1.8.1",
     "chart.js": "^2.8.0",
-    "react": "^16.8.1",
+    "react": "^16.8.6",
     "react-chartjs": "^1.2.0",
-    "react-chartjs-2": "^2.7.4",
-    "react-dom": "^16.8.1",
+    "react-chartjs-2": "^2.7.6",
+    "react-datepicker": "^2.3.0",
+    "react-dom": "^16.8.6",
     "react-iframe": "^1.5.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5"
+    "react-scripts": "^2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,12 +33,12 @@
   "description": "This project was developed by Michael Nilsen.",
   "main": "index.js",
   "devDependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-changed": "^3.2.0",
     "gulp-clean-css": "^4.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-uglify": "^3.0.1"
+    "gulp-uglify": "^3.0.2"
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,9 @@ Vars
 */
 $black: #010000;
 $white: #ffffff;
-$lightgrey: #e6e6e6;
+$lightgrey: #BBB;
+$lightergrey: #e6e6e6;
+$grey: #999;
 $darkgrey: #333;
 $red: #ff1755;
 $blue: #0000ff;
@@ -34,12 +36,24 @@ bold 700 Italic
 
 */
 
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   color: $black;
   font-weight: 400;
   font-style: normal;
+
+}
+
+
+.App{
+  min-height:100vh;
+
+  height: auto !important;
+  position:relative;
+
+  padding-bottom:100px;
 }
 
 a {
@@ -48,11 +62,10 @@ a {
   cursor: pointer;
 
   &:hover {
-    color: $lightgrey;
+    color: $white;
     @include transition(.4s ease-in-out);
   }
 }
 .container-fluid {
   line-height: 24px;
-
 }

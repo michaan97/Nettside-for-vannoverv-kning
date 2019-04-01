@@ -1,27 +1,26 @@
 @import "_config.scss";
+@import "homepage.scss";
+
 header {
   position: relative;
   display: block;
   width: 100%;
+  height: calc(2vw + 40px);
   background: $darkgrey;
   color: $white;
-  height: 90px;
-
   .logo {
-
-
-
     position: absolute;
     top: 50%; left: 20px;
+    font-size: calc(1vw + 10px);
+    max-width:40%;
     @include translateY(-50%);
     img {
       width:10%;
       height:width;
-    position: relative;
-    left:-10px;
+      position: relative;
+      left:-10px;
     }
   }
-
   nav,
   nav ul,
   nav ul li {
@@ -29,28 +28,31 @@ header {
     padding: 0;
 
   }
-
+ //for desktop
   nav {
     position: absolute;
-    top: 50%; right: 15px;
+    top: 50%; right: 0;
+    max-width:60%;
     @include translateY(-50%);
-
     ul li {
       list-style-type: none;
       display: inline-block;
-      margin-right: 20px;
+      margin-right: 2vw;
 
       &.last {
         margin-left: 0;
       }
       a {
-        font-size: 19px;
+        font-size:  calc(1vw + 10px);
         line-height: normal;
         color: $lightgrey;
       }
     }
   }
 }
+
+
+
 footer {
   position: absolute;
   bottom:0;
@@ -60,22 +62,28 @@ footer {
   color: $white;
   height: 60px;
 
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 2vw;
+
   .home{
     a{
       color:$lightgrey;
       display: inline-block;
-      font-size: 24px;
-      line-height: normal;
+      font-size: calc(1.8vw + 2px);
+      line-height:normal;
     }
     position: absolute;
-    top: 50%; left: 15px;
+    top: 50%; left: 2vh;
     @include translateY(-50%);
   }
 
   .contactInfo {
-    position: absolute;
-    top: 50%; right: 500px;
+    position:absolute;
+    top: 50%;left:40vw;
+    @include transition(.4s ease-in-out);
     @include translateY(-50%);
+    font-size: calc(1vw + 7px);
   }
 
   nav,
@@ -83,45 +91,43 @@ footer {
   nav ul li {
     margin: 0;
     padding: 0;
-
   }
-
   nav {
+    display: inline-block;
     position: absolute;
-    top: 50%; right: 300px;
+    top: 50%;left: 60vw;
     @include translateY(-50%);
 
     ul li {
       list-style-type: none;
       display: inline-block;
-      margin-right: 20px;
-
-      &.last {
-        margin-left: 0;
-      }
+      margin-left: 20px;
       a {
-        font-size: 19px;
+        font-size: calc(1.2vw + 3px);
         line-height: normal;
         color: $grey;
       }
     }
   }
-  .statistics{
-    position: absolute;
-    top: 50%; right: 50px;
-    @include translateY(-50%);
-    ul li {
-      list-style-type: none;
-      display: inline-block;
 
-      &.last {
-        margin-left: 0;
-      }
-      a {
-        font-size: 19px;
-        line-height: normal;
-        color: $grey;
-      }
+
+.statistics{
+  position: absolute;
+  top: 50%; left:80vw;
+  @include translateY(-50%);
+  ul li {
+    list-style-type: none;
+    display: inline-block;
+
+    &.last {
+      margin-left: 0;
+    }
+    a {
+      font-size: calc(1.2vw + 3px);
+      line-height: normal;
+      color: $grey;
     }
   }
+}
+
 }

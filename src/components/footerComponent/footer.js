@@ -5,7 +5,7 @@ class Footer extends Component {
     return (
       <footer>
 
-
+      
         <div className="home">
           <a href="/">Vannovervåkning</a>
         </div>

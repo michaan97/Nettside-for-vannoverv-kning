@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route,
+  Route,Switch,
 } from 'react-router-dom';
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import nb from 'date-fns/locale/nb';
@@ -29,14 +29,19 @@ import './Assets/css/default.min.css';
 registerLocale('nb', nb);
 setDefaultLocale('nb');
 class App extends Component {
+
   render() {
     return (
       <Router>
+
+
+
       <div className="App">
 
-        <Header />
-
           <Route exact path='/' component={Homepage} />
+          <Header/>
+          {/*<Route path="/:subpath" component= {Header}/> {/*disable header for homepage*/}
+
           <Route exact path='/Temperature' component={Temperature} />
           <Route exact path='/PH' component={PH} />
           <Route exact path='/Conductivity' component={Conductivity} />

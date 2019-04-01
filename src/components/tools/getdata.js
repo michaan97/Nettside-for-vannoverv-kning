@@ -11,7 +11,7 @@ const headerStyle = {
 
 const dateStyle = {
   top: '10px',
-  left: '50%',
+  left: '5vw',
   position: 'relative',
 };
 
@@ -81,7 +81,8 @@ class GetData extends Component {
   return (
     <div className="header" style={headerStyle}>
           <div className="date" style={dateStyle}>
-          Fra:&emsp; 
+
+          Fra: &emsp;
           <DatePicker
             selected={this.state.startDate}
             selectsStart
@@ -89,7 +90,7 @@ class GetData extends Component {
             endDate={this.state.endDate}
             onChange={this.handleStartChange}
           />
-          &emsp;&emsp;
+          &emsp;
           Til:&emsp;
           <DatePicker
             selected={this.state.endDate}

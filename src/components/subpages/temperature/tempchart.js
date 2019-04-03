@@ -2,60 +2,72 @@ import React, { Component } from 'react';
 
 
 import axios from 'axios';
-//import {Bar, Line, Pie} from 'react-chartjs-2';
-import Chart from '../../charts/Chart.js'
+import Chart2 from '../../charts/Chart.js'
 
 class Tempchart extends Component{
 	constructor(){
     super();
     this.state = {
-      chartData:{}
+      chartData:{},
+      isLoaded: false
     }
-  }
 
-  componentWillMount(){
+    }
+
+  componentDidMount(){
     this.getChartData();
   }
 
   getChartData(){
-    // Ajax calls here
-    this.setState({
-      chartData:{
-        labels: ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'],
-        datasets:[
-          {
-            label:'Temperatur',
-            data:[
-              17,
-              21,
-              17,
-              19,
-              18.5,
-              16,
-							19
-            ],
-            backgroundColor:[
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)',
-              'rgba(153, 102, 255, 0.6)',
-              'rgba(255, 159, 64, 0.6)',
-              'rgba(255, 99, 132, 0.6)',
-							'rgba(255, 255, 255, 0.6)'
-            ]
-          }
-        ]
-      }
+    axios.get('https://vannovervakning.com/api/v1/measurements/1/?types=TEMPERATURE')
+    .then( (res) => {
+        const temp = res.data;
+				let labels = [];
+				let data = [];
+				temp.data.TEMPERATURE.forEach(el => {
+					let datestring = new Date(el.timeCreated)
+					labels.push(datestring.toLocaleDateString());
+					data.push(el.value);
+				});
+      console.log(temp);
+				this.setState({
+					isLoaded: true,
+					chartData: {
+						labels:labels,
+						datasets: [
+							{
+								label: "Temperatur",
+								data: data,
+								backgroundColor: [
+									"rgba(255, 99, 132, 0.6)",
+                  "rgba(54, 162, 235, 0.6)",
+                  "rgba(255, 99, 132, 0.6)"
+								],
+							}
+						]
+					}
+				});
+    	})
+    .catch( (error) => {
+      console.log(error);
     });
   }
 
   render() {
+    var { isLoaded, chartData } = this.state;
+
+    if (!isLoaded) {
+      return <div> Loading... </div>;
+    }
+    else {
     return (
       <div className="chart">
-        <Chart chartData={this.state.chartData} location="Koopen" legendPosition="bottom"/>
+			{Object.keys(this.state.chartData).length &&
+        <Chart2 chartData={this.state.chartData} location="Vikelva" legendPosition="bottom"/>
+				}
       </div>
     );
+    }
   }
 }
 

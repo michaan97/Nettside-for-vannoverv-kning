@@ -1,8 +1,8 @@
 //BarChartComponent.js
 import React, { Component } from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Bar, Line} from 'react-chartjs-2';
 
-class Chart extends Component
+class Chart2 extends Component
 {
   constructor(props){
      super(props);
@@ -15,48 +15,32 @@ class Chart extends Component
      displayTitle:true,
      displayLegend: true,
      legendPosition:'right',
-     location:'City'
+     location:'Place'
    }
 
    render(){
      return (
        <div className="chart">
+        <Line
+          data={this.state.chartData}
+          options={{
+            title:{
+              display:this.props.displayTitle,
+              text:'Temperaturen i '+this.props.location,
+              fontSize:25
+            },
+            legend:{
+              display:this.props.displayLegend,
+              position:this.props.legendPosition
+            }
+          }}
+        />
          <Bar
            data={this.state.chartData}
            options={{
              title:{
                display:this.props.displayTitle,
-               text:'Hvor kaldt er det i '+this.props.location,
-               fontSize:25
-             },
-             legend:{
-               display:this.props.displayLegend,
-               position:this.props.legendPosition
-             }
-           }}
-         />
-
-         <Line
-           data={this.state.chartData}
-           options={{
-             title:{
-               display:this.props.displayTitle,
-               text:'Hvor kaldt er det i '+this.props.location,
-               fontSize:25
-             },
-             legend:{
-               display:this.props.displayLegend,
-               position:this.props.legendPosition
-             }
-           }}
-         />
-
-         <Pie
-           data={this.state.chartData}
-           options={{
-             title:{
-               display:this.props.displayTitle,
-               text:'Hvor kaldt er det i '+this.props.location,
+               text:'Temperaturen i '+this.props.location,
                fontSize:25
              },
              legend:{
@@ -69,4 +53,4 @@ class Chart extends Component
      )
    }
  }
-export default Chart;
+export default Chart2;

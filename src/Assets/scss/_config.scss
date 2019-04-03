@@ -13,11 +13,28 @@ $blue: #0000ff;
 /*
 Mixins
 */
+@mixin animation-keyframes {
+  $animation-number: 0 !default !global;
+  $animation-number: $animation-number + 1 !global;
+  $name: unquote("animation-#{$animation-number}");
+  animation-name: $name;
+  @at-root {
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+}
 
 @mixin translateY($e) {
   -webkit-transform: translateY($e);
     -moz-transform: translateY($e);
           transform: translateY($e);
+}
+
+@mixin translateX($e){
+  -webkit-transform: translateX($e);
+    -moz-transform: translateX($e);
+          transform: translateX($e);
 }
 
 @mixin transition($e) {

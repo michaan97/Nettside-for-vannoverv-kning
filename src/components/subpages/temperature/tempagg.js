@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 import axios from 'axios';
-import Chart2 from '../../charts/Chart.js'
+import Chart from '../../charts/Chart.js'
 
 class Tempagg extends Component{
 	constructor(){
@@ -63,7 +63,7 @@ class Tempagg extends Component{
     return (
       <div className="chart">
 			{Object.keys(this.state.chartData).length &&
-        <Chart2 chartData={this.state.chartData} location="Vikelva" legendPosition="bottom"/>
+        <Chart chartData={this.state.chartData} location="Vikelva" legendPosition="bottom"/>
 				}
       </div>
     );

@@ -11,6 +11,7 @@ import nb from 'date-fns/locale/nb';
 import Header from './components/headerComponent/header';
 import Footer from './components/footerComponent/footer';
 import Homepage from './components/pages/homePage';
+import Dashboard from './components/pages/dashboard';
 import Temperature from './components/pages/temperature';
 import PH from './components/pages/ph';
 import Conductivity from './components/pages/conductivity';
@@ -42,6 +43,7 @@ class App extends Component {
           <Header/>
           {/*<Route path="/:subpath" component= {Header}/> {/*disable header for homepage*/}
 
+          <Route exact path='/Dashboard' component={Dashboard} />
           <Route exact path='/Temperature' component={Temperature} />
           <Route exact path='/PH' component={PH} />
           <Route exact path='/Conductivity' component={Conductivity} />

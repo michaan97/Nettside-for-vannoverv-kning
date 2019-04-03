@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import {Bar, Line} from 'react-chartjs-2';
 
-class Chart2 extends Component
+class Chart extends Component
 {
   constructor(props){
      super(props);
@@ -53,4 +53,4 @@ class Chart2 extends Component
      )
    }
  }
-export default Chart2;
+export default Chart;

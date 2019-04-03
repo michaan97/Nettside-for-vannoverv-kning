@@ -15,7 +15,7 @@ class Chart2 extends Component
      displayTitle:true,
      displayLegend: true,
      legendPosition:'right',
-     location:'City'
+     location:'Place'
    }
 
    render(){

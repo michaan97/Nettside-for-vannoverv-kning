@@ -15,7 +15,7 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    
+
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -41,17 +41,17 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAimbwcO3L-jL0kxMak_XvS-hMEY9oa4lQ",
+      authDomain: "nettside-for-vannovervaakning.firebaseapp.com",
+      databaseURL: "https://nettside-for-vannovervaakning.firebaseio.com",
+      projectId: "nettside-for-vannovervaakning",
+      storageBucket: "nettside-for-vannovervaakning.appspot.com",
+      messagingSenderId: "1001477805584"
+    };
+    firebase.initializeApp(config);
+  </script>
 </html>
-<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAimbwcO3L-jL0kxMak_XvS-hMEY9oa4lQ",
-    authDomain: "nettside-for-vannovervaakning.firebaseapp.com",
-    databaseURL: "https://nettside-for-vannovervaakning.firebaseio.com",
-    projectId: "nettside-for-vannovervaakning",
-    storageBucket: "nettside-for-vannovervaakning.appspot.com",
-    messagingSenderId: "1001477805584"
-  };
-  firebase.initializeApp(config);
-</script>

@@ -9,6 +9,8 @@ const headerStyle = {
 
 };
 
+
+
 const dateStyle = {
   top: '10px',
   left: '5vw',
@@ -21,25 +23,21 @@ class GetData extends Component {
     super(props);
     this.state = {
       getData: [],
-      startDate: new Date(Date.now()-604600000),
+      startDate: new Date(Date.now()-(1000*60*60*24*  5)),
       endDate: new Date(Date.now()),
+      node:{id:1,},
     }
     this.getData = this.getData.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleStartChange = this.handleStartChange.bind(this);
   }
 
-  getData(start, end) {
-    console.log(start.getTime());
+  getData(start, end, node) {
 
-
-
-    var url = 'https://vannovervakning.com/api/v1/measurements/1/' + start.getTime()+ '/' + end.getTime();
+    var url = 'https://vannovervakning.com/api/v1/measurements/'+ node.id+'/' + start.getTime()+ '/' + end.getTime();
     if(this.props.type != null){
         url += '/?types=' + this.props.type;
     }
-
-    console.log(url);
     axios.get(url)
     .then( (res) => {
       this.setState({
@@ -57,23 +55,35 @@ class GetData extends Component {
      this.setState({
        startDate: date,
      });
-     this.getData(date, this.state.endDate);
+     this.getData(date, this.state.endDate, this.state.node);
   }
   handleEndChange(date) {
 
     this.setState({
       endDate: date,
     });
-    this.getData(this.state.startDate,date);
+    this.getData(this.state.startDate,date, this.state.node);
   }
   componentDidMount() {
-    this.getData(this.state.startDate,this.state.endDate);
+    this.getData(this.state.startDate,this.state.endDate, this.state.node);
+  }
+  componentWillUnmount(){
+    this.setState({
+      getData: [],
+    });
+
   }
 
+  componentWillReceiveProps(props){
 
-
+    if(props.node !== this.props.node){
+      this.setState({
+        node:props.node,
+      })
+      this.getData(this.state.startDate,this.state.endDate, props.node);
+    }
+  }
   render() {
-
     if(this.props.norender === true){
       return(null);
     }

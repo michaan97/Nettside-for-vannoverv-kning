@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Homepage from '../pages/homePage';
 import {
   Link
 } from 'react-router-dom';
@@ -23,16 +22,7 @@ class Header extends Component {
             <Link to="/">Startside</Link>
           </li>
           <li>
-            <Link to="/Temperature">Temperatur</Link>
-          </li>
-          <li>
-            <Link to="/PH">PH</Link>
-          </li>
-          <li>
-            <Link to="/Conductivity">Konduktivitet</Link>
-          </li>
-          <li>
-            <Link to="/Turbidity">Turbiditet</Link>
+            <Link to="/Sensors/Chart#/node-1">Sensordata</Link>
           </li>
           <li className="last">
             <Link to="/About">Om oss</Link>

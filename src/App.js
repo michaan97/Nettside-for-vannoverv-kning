@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route,Switch,
+  Route,
 } from 'react-router-dom';
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import nb from 'date-fns/locale/nb';
@@ -11,10 +11,7 @@ import nb from 'date-fns/locale/nb';
 import Header from './components/headerComponent/header';
 import Footer from './components/footerComponent/footer';
 import Homepage from './components/pages/homePage';
-import Temperature from './components/pages/temperature';
-import PH from './components/pages/ph';
-import Conductivity from './components/pages/conductivity';
-import Turbidity from './components/pages/turbidity';
+import Sensors from './components/pages/sensors';
 import About from './components/pages/about';
 import Statistics from './components/pages/statistics';
 
@@ -42,10 +39,7 @@ class App extends Component {
           <Header/>
           {/*<Route path="/:subpath" component= {Header}/> {/*disable header for homepage*/}
 
-          <Route exact path='/Temperature' component={Temperature} />
-          <Route exact path='/PH' component={PH} />
-          <Route exact path='/Conductivity' component={Conductivity} />
-          <Route exact path='/Turbidity' component={Turbidity} />
+          <Route path='/Sensors/*' component={Sensors} />
           <Route exact path='/About' component={About} />
 
           <Route exact path='/Temperature/Aggregate' component={Tempagg} />

@@ -11,15 +11,12 @@ import nb from 'date-fns/locale/nb';
 import Header from './components/headerComponent/header';
 import Footer from './components/footerComponent/footer';
 import Homepage from './components/pages/homePage';
+
 import Sensors from './components/pages/sensors';
+import Dashboard from './components/pages/dashboard';
 import About from './components/pages/about';
 import Statistics from './components/pages/statistics';
 
-
-import Tempagg from './components/subpages/temperature/tempagg';
-import Tempchart from './components/subpages/temperature/tempchart';
-import Temphistory from './components/subpages/temperature/temphistory';
-import Templatest from './components/subpages/temperature/templatest';
 // includes
 import './Assets/css/default.min.css';
 
@@ -40,14 +37,8 @@ class App extends Component {
           {/*<Route path="/:subpath" component= {Header}/> {/*disable header for homepage*/}
 
           <Route path='/Sensors/*' component={Sensors} />
+          <Route exact path='/Dashboard' component={Dashboard} />
           <Route exact path='/About' component={About} />
-
-          <Route exact path='/Temperature/Aggregate' component={Tempagg} />
-          <Route exact path='/Temperature/Chart' component={Tempchart} />
-          <Route exact path='/Temperature/Latest' component={Templatest} />
-          <Route exact path='/Temperature/History' component={Temphistory} />
-
-          <Route exact path='/Statistikk' component={Statistics} />
 
         <Footer />
 

@@ -18,6 +18,7 @@ class History extends Component {
       node:this.props.node,
     };
     this.onChange = this.onChange.bind(this);
+    this.onLoading = this.onLoading.bind(this);
   }
 
   onChange(data){
@@ -25,6 +26,11 @@ class History extends Component {
     this.setState({
       getData:data,
       isLoaded:true,
+    });
+  }
+  onLoading(data){
+    this.setState({
+      isLoaded:false,
     });
   }
   componentDidMount() {
@@ -102,7 +108,7 @@ class History extends Component {
     return (
       <div className="history">
 
-      <GetData onChange={this.onChange}/>
+      <GetData onChange={this.onChange} onLoading={this.onLoading}/>
         <div>
         {button}
           {table}

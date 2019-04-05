@@ -3,6 +3,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DisplayData from '../subpages/sensordata/displaydata';
 import History from '../subpages/sensordata/history';
+import Statistics from './statistics';
 import {
   Link,Switch,Route
 } from 'react-router-dom';
@@ -44,7 +45,7 @@ class Sensors extends Component {
     super(props);
     this.state = {
 
-      subpage:"Chart",
+      subpage:"/Chart",
 
       location: [
       {
@@ -114,8 +115,6 @@ class Sensors extends Component {
     if(this.state.location.length >=number){
       this.setState({
         node:this.state.location[number - 1],
-
-
       });
     }
     this.setState({  subpage:page,});
@@ -136,6 +135,9 @@ class Sensors extends Component {
 
       container = <History node={this.state.node}/>;
         break;
+      case "/Statistics":
+      container = <Statistics node={this.state.node}/>;
+        break;
       default:
 
     }
@@ -145,6 +147,11 @@ class Sensors extends Component {
       <div className="sideBar" style={sideBarStyle}>
         <nav>
           <ul style={listStyle}>
+
+            <h2> {this.state.node.title} </h2>
+
+
+
             <DropdownButton id="dropdown-basic-button" title="Velg node" >
               <Dropdown.Item href="#/1">Node 1</Dropdown.Item>
               <Dropdown.Item href="#/2">Node 2</Dropdown.Item>
@@ -161,10 +168,7 @@ class Sensors extends Component {
               <Link to="/Sensors/Chart" style={linkStyle}>Grafmålinger</Link>
             </li>
             <li  style={linkStyle}>
-              <Link to="/Temperature/Latest"style={linkStyle}>Siste målinger</Link>
-            </li>
-            <li  style={linkStyle}>
-              <Link to="/Temperature/Aggregate"style={linkStyle}>Høyeste, laveste og gjennomsnitt</Link>
+              <Link to="/Sensors/Statistics"style={linkStyle}>Høyeste, laveste og gjennomsnitt</Link>
             </li>
             <li className="last"  style={linkStyle}>
               <Link to="/Sensors/History"style={linkStyle}>Historikk</Link>

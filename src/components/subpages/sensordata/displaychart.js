@@ -100,7 +100,7 @@ class DisplayChart extends Component {
 
         {this.state.isLoaded ? Object.keys(this.state.chartData).length &&
           <LineChart chartData={this.state.chartData} location="Vikelva" legendPosition="bottom" title={this.props.title}/>
-          : <p>Laster..</p>
+          : <p>Finner ikke data for {this.props.title}</p>
 
         }
       </div>

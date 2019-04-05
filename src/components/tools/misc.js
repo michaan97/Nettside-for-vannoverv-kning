@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-function lastHeard(){
-  var url = 'https://vannovervakning.com/api/v1/measurements/1/';
+function lastHeard(nodeId){
+  var url = 'https://vannovervakning.com/api/v1/measurements/'+nodeId+'/';
   return axios.get(url)
     .then( (res) => {
         var d = new Date();
@@ -10,18 +10,20 @@ function lastHeard(){
       })
     .catch( (error) => {
       console.log(error);
+
     });
 
 }
 
 //Evaluates the status of the sensor node, returns true if its online
-function status(){
-  var threshold = 60; //how long since last heard in minutes until deemed offline
-  var url = 'https://vannovervakning.com/api/v1/measurements/1/';
+function status(nodeId){
+  var threshold = 60*12; //how long since last heard in minutes until deemed offline
+  var url = 'https://vannovervakning.com/api/v1/measurements/'+nodeId+'/';
   return axios.get(url)
     .then( (res) => {
         var d = new Date();
         d = Date.now() - Date.parse(res.data.data.TEMPERATURE[0]["timeCreated"] ) - 1000*60*(d.dst());
+
         if(d > threshold*1000*60){
           return false;
         }
@@ -29,6 +31,7 @@ function status(){
       })
     .catch( (error) => {
       console.log(error);
+      return false;
     });
 }
 

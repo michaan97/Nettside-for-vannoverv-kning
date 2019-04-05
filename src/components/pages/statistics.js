@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {lastHeard, status, toTime} from '../tools/misc';
+import Badge from 'react-bootstrap/Badge';
+import Spinner from 'react-bootstrap/Spinner';
 
 class Statistics extends Component {
 
@@ -22,27 +24,28 @@ class Statistics extends Component {
       turbMax:0,
       turbMin:0,
 
+      node:{id:1},
       lastHeard:'Laster inn...',
 
       interval:'Laster inn...',
-      status:'Laster inn...',
+      status:false,
     };
+    if(props.node !== undefined){
+      this.state.node = props.node;
+    }
     this.getData = this.getData.bind(this);
     this.getAggregation = this.getAggregation.bind(this);
   }
 
   getData(){
-    status().then(online =>{
-      var text = 'Offline';
-      if(online){
-        text = 'Online';
-      }
+    status(this.state.node.id).then(online =>{
       this.setState({
-        status:text,
+        status:online,
+
       });
     });
 
-    lastHeard().then(time =>{
+    lastHeard(this.state.node.id).then(time =>{
       this.setState({
         lastHeard:time,
       });
@@ -111,7 +114,8 @@ class Statistics extends Component {
         turbMin:data,
       });
     });
-    var url = 'https://vannovervakning.com/api/v1/measurements/1/0'; //Fetches all the data since the beginning
+    var d = Date.now() - (1000*60*60*24);
+    var url = 'https://vannovervakning.com/api/v1/measurements/'+this.state.node.id+'/'+d;
     axios.get(url)
     .then((res) => {
 
@@ -126,15 +130,17 @@ class Statistics extends Component {
     })
     .catch( (error) => {
       console.log(error);
+        this.setState({
+          isLoaded:true,
+        });
     });
-
 
   }
 
 
   //returns the aggregation as a number. Specify sensor type (e.g "TEMPERATURE") and agg. type (e.g "AVERAGE") and from time
   getAggregation(sensor,type, from=0){
-    var url = 'https://vannovervakning.com/api/v1/measurements/1/' + from +'?types='+sensor+ '&aggregate=' +type ;
+    var url = 'https://vannovervakning.com/api/v1/measurements/'+this.state.node.id +'/'+ from +'?types='+sensor+ '&aggregate=' +type ;
     return axios.get(url)
     .then((res) => {
       return res.data.data[sensor][0]["value"];
@@ -144,7 +150,16 @@ class Statistics extends Component {
     });
   }
 
+  componentWillReceiveProps(props){
+      this.setState({
+        node:props.node,
+        isLoaded:false,
+      }, () => {
+      this.getData();
+  });
 
+
+  }
 
   componentDidMount() {
     this.getData();
@@ -153,16 +168,19 @@ class Statistics extends Component {
 
 
   render() {
+
     let statistics = <div> Laster statistikk... dette tar litt tid </div>;
-
+    var status = <div>"Laster inn.."</div>;
     if(this.state.isLoaded === true){
+      if(this.state.status){
+        status =  <Badge variant="success">Online</Badge> ;
+      }else{
+        status =  <Badge variant="danger">Offline</Badge>;
+      }
+
       statistics =  <div>
-
-
-      Antall målinger: {this.state.getData.data.TEMPERATURE.length}<br/>
-
       Mellomrom mellom målinger: {this.state.interval}
-      
+
 
 
       <h3>Temperatur</h3>
@@ -219,15 +237,21 @@ class Statistics extends Component {
       </div>;
     }
 
+
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" style={{display:'flex', flexDirection:'column',height:'100%', minHeight:'95vh',marginLeft:'20px'}}>
         <h1>
         Statistikk
         </h1>
-          Status: {this.state.status}<br/>
+          {this.state.isLoaded ?
+            <div>
+          Status: {status}<br/>
           Sist hørt fra: {this.state.lastHeard}<br/>
           {statistics}
-
+          </div>
+          : <div><Spinner animation="border" role="status" >
+                            <span className="sr-only">Loading...</span>
+                        </Spinner></div>}
 
       </div>
     );

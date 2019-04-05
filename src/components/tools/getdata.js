@@ -23,7 +23,7 @@ class GetData extends Component {
     super(props);
     this.state = {
       getData: [],
-      startDate: new Date(Date.now()-(1000*60*60*24*  5)),
+      startDate: new Date(Date.now()-(1000*60*60*24*  3)),
       endDate: new Date(Date.now()),
       node:{id:1,},
     }
@@ -33,7 +33,7 @@ class GetData extends Component {
   }
 
   getData(start, end, node) {
-
+    this.props.onLoading();
     var url = 'https://vannovervakning.com/api/v1/measurements/'+ node.id+'/' + start.getTime()+ '/' + end.getTime();
     if(this.props.type != null){
         url += '/?types=' + this.props.type;

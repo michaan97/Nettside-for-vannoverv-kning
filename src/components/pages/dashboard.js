@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {lastHeard, status, toTime} from '../tools/misc';
-import Tempchart from '../subpages/temperature/tempchart.js'
 import Chart from '../charts/Chart.js'
 
 class Dashboard extends Component {

@@ -5,7 +5,7 @@ function lastHeard(nodeId){
   return axios.get(url)
     .then( (res) => {
         var d = new Date();
-        d = Date.now() - Date.parse(res.data.data.TEMPERATURE[0]["timeCreated"] ) - 1000*60*(d.dst());
+        d = Date.now() - Date.parse(res.data.data.TEMPERATURE[0]["timeCreated"]);
         return toTime(d);
       })
     .catch( (error) => {
@@ -22,7 +22,7 @@ function status(nodeId){
   return axios.get(url)
     .then( (res) => {
         var d = new Date();
-        d = Date.now() - Date.parse(res.data.data.TEMPERATURE[0]["timeCreated"] ) - 1000*60*(d.dst());
+        d = Date.now() - Date.parse(res.data.data.TEMPERATURE[0]["timeCreated"] );
 
         if(d > threshold*1000*60){
           return false;
@@ -41,7 +41,7 @@ Date.prototype.dst = function() //calculates the time difference in norway accor
     var jan = new Date(this.getFullYear(), 0, 1);
     var jul = new Date(this.getFullYear(), 6, 1);
     var max = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
-    if (this.getTimezoneOffset() > max){
+    if (this.getTimezoneOffset() < max){
       return this.getTimezoneOffset();
     }
     else{

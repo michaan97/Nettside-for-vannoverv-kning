@@ -5,7 +5,7 @@ class Footer extends Component {
     return (
       <footer>
 
-      
+
         <div className="home">
           <a href="/">Vannovervåkning</a>
         </div>
@@ -27,13 +27,6 @@ class Footer extends Component {
           </ul>
         </nav>
 
-        <nav className="statistics">
-          <ul>
-          <li>
-            <a href="/Statistikk">Statistikk</a>
-          </li>
-          </ul>
-        </nav>
 
       </footer>
 

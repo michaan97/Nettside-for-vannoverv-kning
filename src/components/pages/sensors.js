@@ -3,6 +3,11 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DisplayData from '../subpages/sensordata/displaydata';
 import History from '../subpages/sensordata/history';
+
+import {lastHeard, status, toTime} from '../tools/misc';
+import Badge from 'react-bootstrap/Badge';
+
+
 import Statistics from './statistics';
 import {
   Link,Switch,Route
@@ -46,6 +51,9 @@ class Sensors extends Component {
     this.state = {
 
       subpage:"/Chart",
+
+      status:false,
+      isLoaded:false,
 
       location: [
       {
@@ -115,11 +123,28 @@ class Sensors extends Component {
     if(this.state.location.length >=number){
       this.setState({
         node:this.state.location[number - 1],
+        isLoaded:false,
+      }, () => {
+        status(this.state.node.id).then(online =>{
+          this.setState({
+            status:online,
+            isLoaded:true,
+          });
+        });
       });
     }
     this.setState({  subpage:page,});
-  }
 
+
+  }
+  componentDidMount(){
+    status(this.state.node.id).then(online =>{
+      this.setState({
+        status:online,
+        isLoaded:true,
+      });
+    });
+  }
 
   render() {
 
@@ -141,6 +166,14 @@ class Sensors extends Component {
       default:
 
     }
+    let status = <div></div>;
+    if(this.state.isLoaded === true){
+      if(this.state.status){
+        status =  <Badge variant="success">Online</Badge> ;
+      }else{
+        status =  <Badge variant="danger">Offline</Badge>;
+      }
+    }
 
     return (
       <div className="container-fluid" style={{position:'relative', flexDirection:'row', display:'flex',}}>
@@ -149,7 +182,7 @@ class Sensors extends Component {
           <ul style={listStyle}>
 
             <h2> {this.state.node.title} </h2>
-
+            {status}
 
 
             <DropdownButton id="dropdown-basic-button" title="Velg node" >

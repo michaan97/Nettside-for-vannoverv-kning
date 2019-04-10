@@ -109,24 +109,4 @@ footer {
     }
   }
 
-
-.statistics{
-  position: absolute;
-  top: 50%; left:80vw;
-  @include translateY(-50%);
-  ul li {
-    list-style-type: none;
-    display: inline-block;
-
-    &.last {
-      margin-left: 0;
-    }
-    a {
-      font-size: calc(1vw + 2px);
-      line-height: normal;
-      color: $grey;
-    }
-  }
-}
-
 }

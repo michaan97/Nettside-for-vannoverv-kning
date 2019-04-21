@@ -2,22 +2,26 @@
 @import "homepage.scss";
 
 header {
-  position: relative;
+  position: fixed;
+  overflow: hidden;
+  z-index: 1000;
   display: block;
   width: 100%;
   height: 60px;
   left:0;
+  top:0;
   background: $darkgrey;
   color: $white;
   .logo {
     position: absolute;
-    top: 50%; left: 20px;
+    top: 60%; left: 20px;
     font-size: calc(1vw + 10px);
     max-width:40%;
     @include translateY(-50%);
     img {
-      width:10%;
+      width:40px;
       height:width;
+      bottom:5px;
       position: relative;
       left:-10px;
     }
@@ -27,7 +31,6 @@ header {
   nav ul li {
     margin: 0;
     padding: 0;
-
   }
  //for desktop
   nav {
@@ -44,6 +47,7 @@ header {
         margin-left: 0;
       }
       a {
+
         font-size:  calc(1vw + 10px);
         line-height: normal;
         color: $lightgrey;

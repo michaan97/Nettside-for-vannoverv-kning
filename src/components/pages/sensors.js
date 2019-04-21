@@ -6,7 +6,8 @@ import History from '../subpages/sensordata/history';
 
 import {lastHeard, status, toTime} from '../tools/misc';
 import Badge from 'react-bootstrap/Badge';
-
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import {NavDropdown, Nav}  from 'react-bootstrap';
 
 import Statistics from './statistics';
 import {
@@ -14,25 +15,41 @@ import {
 } from 'react-router-dom';
 
 const sideBarStyle = {
-  background:'black',
-  color:'white',
-  position:'relative',
+
+  color:'black',
+  position:'fixed',
   left:'0px',
   top:'0px',
   width:'200px',
   minHeight:'90vh',
+  height:'100%',
 };
 const listStyle ={
   listStyle:'none',
-  color:'white',
+  color:'black',
   position:'relative',
-  top:'20px',
-  left:'-20px'
+  top:'8px',
+  left:'-20px',
+  flexDirection:'column',
+  alignItems:'left',
+  justifyContent:'top',
+  display:'flex',
+
 };
 const linkStyle ={
-  color:'white',
+  color:'black',
   marginTop:'10px',
   fontSize:'1rem',
+  linkDecoration:'none',
+};
+
+const badgeStyle = {
+  padding:'5px',
+  margin: '2px',
+  marginLeft: '5px',
+  height:'25px',
+
+  alignSelf:'center',
 };
 
 const containerStyle ={
@@ -42,6 +59,7 @@ const containerStyle ={
   width:'100%',
   height:'100%',
   minHeight:'90vh',
+  marginLeft:'200px',
 };
 
 class Sensors extends Component {
@@ -169,46 +187,44 @@ class Sensors extends Component {
     let status = <div></div>;
     if(this.state.isLoaded === true){
       if(this.state.status){
-        status =  <Badge variant="success">Online</Badge> ;
+        status =  <Badge style={badgeStyle} variant="success">Online</Badge> ;
       }else{
-        status =  <Badge variant="danger">Offline</Badge>;
+        status =  <Badge  style={badgeStyle} variant="danger">Offline</Badge>;
       }
     }
 
     return (
       <div className="container-fluid" style={{position:'relative', flexDirection:'row', display:'flex',}}>
-      <div className="sideBar" style={sideBarStyle}>
+      <Jumbotron fluid className="sideBar" style={sideBarStyle}>
         <nav>
           <ul style={listStyle}>
-
-            <h2> {this.state.node.title} </h2>
+          <div style={{display:'flex',alignItems:'center'}}>
+            <h2 style={{color:'black',flexShrink:'0'}}> {this.state.node.title} </h2>
             {status}
-
-
-            <DropdownButton id="dropdown-basic-button" title="Velg node" >
-              <Dropdown.Item href="#/1">Node 1</Dropdown.Item>
-              <Dropdown.Item href="#/2">Node 2</Dropdown.Item>
-              <Dropdown.Item href="#/3">Node 3</Dropdown.Item>
-              <Dropdown.Item href="#/4">Node 4</Dropdown.Item>
-              <Dropdown.Item href="#/5">Node 5</Dropdown.Item>
-              <Dropdown.Item href="#/6">Node 6</Dropdown.Item>
-              <Dropdown.Item href="#/7">Node 7</Dropdown.Item>
-              <Dropdown.Item href="#/8">Node 8</Dropdown.Item>
-            </DropdownButton>
-
-
-            <li className="first" style={linkStyle}>
+            <div style={{ marginBottom:'10px'}}/>
+          </div>
+            <NavDropdown title="Velg node" id="basic-nav-dropdown"  style={linkStyle}>
+              <NavDropdown.Item href="#/1">Node 1</NavDropdown.Item>
+              <NavDropdown.Item href="#/2">Node 2</NavDropdown.Item>
+              <NavDropdown.Item href="#/3">Node 3</NavDropdown.Item>
+              <NavDropdown.Item href="#/4">Node 4</NavDropdown.Item>
+              <NavDropdown.Item href="#/5">Node 5</NavDropdown.Item>
+              <NavDropdown.Item href="#/6">Node 6</NavDropdown.Item>
+              <NavDropdown.Item href="#/7">Node 7</NavDropdown.Item>
+              <NavDropdown.Item href="#/8">Node 8</NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link>
               <Link to="/Sensors/Chart" style={linkStyle}>Grafmålinger</Link>
-            </li>
-            <li  style={linkStyle}>
+            </Nav.Link>
+            <Nav.Link>
               <Link to="/Sensors/Statistics"style={linkStyle}>Høyeste, laveste og gjennomsnitt</Link>
-            </li>
-            <li className="last"  style={linkStyle}>
+            </Nav.Link>
+            <Nav.Link className="last" >
               <Link to="/Sensors/History"style={linkStyle}>Historikk</Link>
-            </li>
+            </Nav.Link>
           </ul>
         </nav>
-      </div>
+      </Jumbotron>
       <div style={containerStyle}>
         {container}
       </div>

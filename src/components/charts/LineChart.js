@@ -13,7 +13,7 @@ class LineChart extends Component
 
    static defaultProps = {
      displayTitle:true,
-     displayLegend: true,
+     displayLegend: false,
      legendPosition:'right',
      location:'Place'
    }
@@ -45,7 +45,14 @@ class LineChart extends Component
             legend:{
               reverse:true,
               display:this.props.displayLegend,
-              position:this.props.legendPosition
+              position:this.props.legendPosition,
+
+            },
+            scales: {
+              xAxes: [{
+                  type: 'time',
+
+              }]
             }
           }}
         />

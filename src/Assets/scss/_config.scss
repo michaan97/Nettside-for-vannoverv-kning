@@ -80,12 +80,14 @@ a {
 
   &:hover {
     color: $white;
+    text-decoration: none;
     @include transition(.4s ease-in-out);
   }
 }
 .container-fluid {
+  position:relative;
   line-height: 24px;
-
+  margin-top:60px;
   padding:0;
 
 }

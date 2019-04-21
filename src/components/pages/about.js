@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-
+import hei from "../../Assets/Images/river.jpg";
 const stil = {
-  backgroundColor:'white',
+  width:'100%',
+  
 };
 
 class About extends Component {
@@ -12,6 +13,8 @@ class About extends Component {
         <h1>
         Om oss
         </h1>
+        <img src={hei} alt={""} style={stil}/>
+
           <p>
           Vi er gruppe 1!
           </p>

@@ -4,6 +4,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
+
+//Oldest time which is allowed to be selected
+const startTime = new Date("2019-04-10T13:52:46.444Z");
+
+
 const headerStyle = {
   height: '50px',
 
@@ -14,7 +19,6 @@ const headerStyle = {
 const dateStyle = {
   top: '10px',
   left: '5vw',
-  position: 'relative',
 };
 
 class GetData extends Component {
@@ -23,7 +27,7 @@ class GetData extends Component {
     super(props);
     this.state = {
       getData: [],
-      startDate: new Date(Date.now()-(1000*60*60*24*  3)),
+      startDate: startTime,
       endDate: new Date(Date.now()),
       node:{id:1,},
     }
@@ -94,8 +98,13 @@ class GetData extends Component {
 
           Fra: &emsp;
           <DatePicker
+
             selected={this.state.startDate}
             selectsStart
+
+            showTimeSelect
+            minDate={startTime}
+            maxDate={new Date()}
             startDate={this.state.startDate}
             endDate={this.state.endDate}
             onChange={this.handleStartChange}
@@ -103,9 +112,13 @@ class GetData extends Component {
           &emsp;
           Til:&emsp;
           <DatePicker
+
             selected={this.state.endDate}
             selectsEnd
 
+            showTimeSelect
+            minDate={startTime}
+            maxDate={new Date()}
             startDate={this.state.startDate}
             endDate={this.state.endDate}
             onChange={this.handleEndChange}

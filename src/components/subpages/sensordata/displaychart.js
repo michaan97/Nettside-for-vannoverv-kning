@@ -3,7 +3,7 @@ import LineChart from '../../charts/LineChart';
 
 
 const chartStyle = {
-  minWidth:'80vw',
+  width:'90%',
   flexShrink:'0',
 };
 
@@ -50,8 +50,8 @@ class DisplayChart extends Component {
         let labels = [];
         let data = [];
         temp.data[this.props.type].forEach(el => {
-          let datestring = new Date(el.timeCreated)
-          labels.push(datestring.toLocaleDateString());
+          let datestring = new Date(el.timeCreated);
+          labels.push(datestring);
           data.push(el.value);
         });
         data.reverse();

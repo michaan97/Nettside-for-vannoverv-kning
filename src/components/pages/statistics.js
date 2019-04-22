@@ -4,6 +4,8 @@ import {lastHeard, status, toTime} from '../tools/misc';
 import Badge from 'react-bootstrap/Badge';
 import Spinner from 'react-bootstrap/Spinner';
 
+const startTime = new Date("2019-04-10T13:52:46.444Z").getTime();
+
 class Statistics extends Component {
 
   constructor(props) {
@@ -139,7 +141,7 @@ class Statistics extends Component {
 
 
   //returns the aggregation as a number. Specify sensor type (e.g "TEMPERATURE") and agg. type (e.g "AVERAGE") and from time
-  getAggregation(sensor,type, from=0){
+  getAggregation(sensor,type, from=startTime){
     var url = 'https://vannovervakning.com/api/v1/measurements/'+this.state.node.id +'/'+ from +'?types='+sensor+ '&aggregate=' +type ;
     return axios.get(url)
     .then((res) => {

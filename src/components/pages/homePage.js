@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import river from '../../Assets/Images/river.jpg';
+import river from '../../Assets/Images/background.jpeg';
 class Homepage extends Component {
   render() {
     return (

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Navbar} from 'react-bootstrap';
 import {
   Link
 } from 'react-router-dom';
@@ -9,12 +10,11 @@ class Header extends Component {
   render() {
     return (
       <header>
-      <div className="logo">
 
-      <img src={logo} alt=""/>
-      Vannovervåkning
-
-      </div>
+      <Navbar.Brand href="/" className='logo'>
+        <img src={logo} alt=""/>
+          Vannovervåkning
+      </Navbar.Brand>
 
       <nav>
         <ul>

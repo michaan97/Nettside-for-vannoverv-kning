@@ -10,13 +10,14 @@ header {
   height: 60px;
   left:0;
   top:0;
-  background: $darkgrey;
+  background: $darkergrey;
   color: $white;
   .logo {
     position: absolute;
     top: 60%; left: 20px;
     font-size: calc(1vw + 10px);
     max-width:40%;
+    color:$white;
     @include translateY(-50%);
     img {
       width:40px;
@@ -63,7 +64,7 @@ footer {
   bottom:0;
   width: 100%;
   left:0;
-  background: $darkgrey;
+  background: $darkergrey;
   color: $white;
   height: 40px;
   list-style-type: none;

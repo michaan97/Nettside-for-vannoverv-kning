@@ -241,7 +241,7 @@ class Statistics extends Component {
 
 
     return (
-      <div className="container-fluid" style={{display:'flex', width:'90%',flexDirection:'column',height:'100%', minHeight:'95vh',marginLeft:'30px'}}>
+      <div className="container-fluid" style={{display:'flex', width:'90%',flexDirection:'column',height:'100%', minHeight:'95vh',marginLeft:'30px', paddingBottom: 50}}>
         <h1>
         Statistikk
         </h1>

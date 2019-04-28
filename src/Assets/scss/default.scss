@@ -84,12 +84,21 @@ footer {
 
   .contactInfo {
     position:absolute;
-    top: 50%;left:40vw;
+    top: 50%;left:65vw;
     @include transition(.4s ease-in-out);
     @include translateY(-50%);
-    font-size: calc(1vw + 4px);
+    font-size: calc(1vw + 2px);
+    color: $grey;
   }
+  .email {
+    position:absolute;
+    top: 50%;left:84vw;
+    @include transition(.4s ease-in-out);
+    @include translateY(-50%);
+    font-size: calc(1vw + 1px);
+    color: $grey;
 
+  }
   nav,
   nav ul,
   nav ul li {

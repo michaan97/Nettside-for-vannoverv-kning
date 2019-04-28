@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+
 
 class Footer extends Component {
   render() {
@@ -11,21 +13,12 @@ class Footer extends Component {
         </div>
 
         <div className="contactInfo">
-        Kontaktinformasjon:
+        Kontaktinformasjon for nettsiden:
 
         </div>
-
-        <nav >
-          <ul>
-            <li className="first">
-              <a href="/Navn">Navn</a>
-            </li>
-            <li className="last">
-              <a href="/E-post">E-post</a>
-            </li>
-
-          </ul>
-        </nav>
+            <div className="email">
+            michaelnilsen97@gmail.com
+            </div>
 
 
       </footer>

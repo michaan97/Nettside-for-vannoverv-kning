@@ -3,7 +3,7 @@
 ## Innhenting av data og misc
 
 Dataen hentes inn av komponenten `getData` fra `getdata.js` der det brukes axios for å gjøre
-en `GET-request` til [API-et]{https://github.com/leiklier/smartwater-api}. komponenten `getData` blir senere brukt i andre filer for å
+en `GET-request` til [API-et](https://github.com/leiklier/smartwater-api). komponenten `getData` blir senere brukt i andre filer for å
 slippe å gjenta axioskallet. Filen `misc.js` definerer en rekke funksjoner som senere brukes,
 som funksjonen som formaterer tid, gjør det mulig å laste ned som csv-fil og sjekker status.
 

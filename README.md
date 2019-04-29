@@ -19,7 +19,7 @@ som funksjonen som formaterer tid, gjør det mulig å laste ned som csv-fil og s
 
 ## App.js
 
-Dette er `main`-filen som bare henter inn komponenter fra mappen `components`.
+Dette er `main`-filen som bare henter inn komponenter fra mappen `components`. Slik at siden består av en header, de ulike navigeringssidene (Startside, Sensordata og Om Oss) og en footer. 
 
 ## Layout
 

@@ -185,7 +185,7 @@ class Statistics extends Component {
 
 
 
-      <h3>Temperatur</h3>
+      <h3>Temperatur [°C]</h3>
       <ul>
       <li>
       Gjennomsnitt: {this.state.tempAverage} °C
@@ -198,7 +198,7 @@ class Statistics extends Component {
       </li>
       </ul>
 
-      <h3>PH</h3>
+      <h3>pH</h3>
       <ul>
       <li>
       Gjennomsnitt: {this.state.PHAverage}
@@ -211,7 +211,7 @@ class Statistics extends Component {
       </li>
       </ul>
 
-      <h3>Konduktivitet</h3>
+      <h3>Konduktivitet [ppm]</h3>
       <ul>
       <li>
       Gjennomsnitt: {this.state.kondAverage}
@@ -224,7 +224,7 @@ class Statistics extends Component {
       </li>
       </ul>
 
-      <h3>Turbiditet</h3>
+      <h3>Turbiditet [ntu]</h3>
       <ul>
       <li>
       Gjennomsnitt: {this.state.turbAverage}

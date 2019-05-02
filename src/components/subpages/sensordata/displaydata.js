@@ -49,10 +49,10 @@ class DisplayData extends Component {
           {this.state.node.title}
         </h1>
         <GetData onChange={this.onChange} node={this.state.node} onLoading={this.onLoading} />
-        {this.state.isLoaded ? <DisplayChart type={'TEMPERATURE'} title={'Temperatur'} data={this.state.data} /> : spinner}
-        {this.state.isLoaded ?<DisplayChart type={'PH'} title={'PH'} data={this.state.data} /> : spinner}
-        {this.state.isLoaded ?<DisplayChart type={'CONDUCTIVITY'} title={'Konduktivitet'} data={this.state.data} /> : spinner}
-        {this.state.isLoaded ?<DisplayChart type={'TURBIDITY'} title={'Turbititet'} data={this.state.data} /> : spinner}
+        {this.state.isLoaded ? <DisplayChart type={'TEMPERATURE'} title={'Temperatur [°C]'} data={this.state.data} /> : spinner}
+        {this.state.isLoaded ?<DisplayChart type={'PH'} title={'pH'} data={this.state.data}  /> : spinner}
+        {this.state.isLoaded ?<DisplayChart type={'CONDUCTIVITY'} title={'Konduktivitet [ppm]'} data={this.state.data} /> : spinner}
+        {this.state.isLoaded ?<DisplayChart type={'TURBIDITY'} title={'Turbititet [ntu]'} data={this.state.data} /> : spinner}
         <div style={{height:'20vh'}}/>
 
 

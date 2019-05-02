@@ -116,10 +116,10 @@ class History extends Component {
       <table id="table" style={tableStyle}>
         <thead>
           <tr>
-            <th style={headerStyle}>Temperatur</th>
+            <th style={headerStyle}>Temperatur [°C]</th>
             <th style={headerStyle}>PH</th>
-            <th style={headerStyle}>Konduktivitet</th>
-            <th style={headerStyle}>Turbititet</th>
+            <th style={headerStyle}>Konduktivitet [ppm]</th>
+            <th style={headerStyle}>Turbititet [ntu]</th>
             <th style={headerStyle}>Tid </th>
           </tr>
         </thead>
